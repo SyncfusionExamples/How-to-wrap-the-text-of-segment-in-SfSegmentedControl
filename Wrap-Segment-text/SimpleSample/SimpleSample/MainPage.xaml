@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfButtons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:local="clr-namespace:SimpleSample"
+             x:Class="SimpleSample.MainPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Meals combo" TextColor="Black" FontSize="22"/>
+            <sfButtons:SfSegmentedControl
+                x:Name="segmentedControl"
+                BorderColor="Transparent"
+                BackgroundColor="LightBlue"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Color="Transparent"
+                SegmentHeight="120"
+                SegmentWidth="200"
+                ItemsSource="{Binding ViewItems}">
+                <sfButtons:SfSegmentedControl.BindingContext>
+                    <local:ViewModel/>
+                </sfButtons:SfSegmentedControl.BindingContext>
+                <sfButtons:SfSegmentedControl.SelectionIndicatorSettings>
+                    <sfButtons:SelectionIndicatorSettings Color="LightPink"/>
+                </sfButtons:SfSegmentedControl.SelectionIndicatorSettings>
+            </sfButtons:SfSegmentedControl>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
