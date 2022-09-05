@@ -8,7 +8,7 @@ This project uses the following Syncfusion controls:
 * [SfSegmentedControl](https://www.syncfusion.com/xamarin-ui-controls/xamarin-segmented-control) - To show the sfsegmentedcontrol
 
 ## Screenshots
-<img src="Images/Button1.png"  Width="250"/> <img src="Images/Button2.png" Width="250" /> Width="250" />
+<img src="Images/Button1.png"  Width="250"/> <img src="Images/Button2.png" Width="250" /> 
 
 ## Supported platforms
 
