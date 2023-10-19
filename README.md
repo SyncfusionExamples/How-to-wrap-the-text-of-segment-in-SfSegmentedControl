@@ -45,6 +45,7 @@ Set the control to content in ContentPage.
 ```
 #   Wrap text in Segmented control
 
+**[C#]**
 ```
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -74,4 +75,35 @@ Set the control to content in ContentPage.
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+```
+
+**[C#]**
+
+```
+public class ViewModel 
+{
+    public ObservableCollection<View> ViewItems { get; set; }
+
+        public ViewModel()
+        {
+            ViewItems = new ObservableCollection<View>()
+            {
+                new CustomLabel(){Text = "Veg (Garlic, taco toppings and ranch)" },
+                new CustomLabel(){Text = "Non Veg (bafbecue sauce and chicken)" }
+            };
+        }
+}
+
+    public class CustomLabel : Label
+    {
+        public CustomLabel()
+        {
+            TextColor = Color.Black;
+            FontSize = 30;
+            LineBreakMode = Xamarin.Forms.LineBreakMode.WordWrap;
+            HorizontalTextAlignment = TextAlignment.Center;
+            VerticalOptions = LayoutOptions.Center;
+            HeightRequest = 200;
+        }
+    }
 ```
