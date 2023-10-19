@@ -1,3 +1,6 @@
+# How-to-wrap-the-text-of-segment-in-SfSegmentedControl
+This section explains how to wrap the text of segment in SfsegmentedControl with examples.
+
 # Getting Started with Xamarin Segmented Control (SfSegmentedControl)
 
 This section provides an overview for working with the segmented control for Xamarin.Forms. Walk through the entire process of creating a real-world application with the SfSegmentedControl.
@@ -40,76 +43,35 @@ Set the control to content in ContentPage.
     <buttons:SfSegmentedControl  />
 </ContentPage.Content>
 ```
-## Adding supportive views to the application
-For the completeness of the ticket booking application, few framework controls are added to the application to get the data from the user.
-
-ViewModel class for the Entry, which we have used in our View.
-    
-**[C#]**
-```
-    using Syncfusion.XForms.Buttons;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
-    using Xamarin.Forms;
-    
-    namespace SegmentGettingStarted
-    {
-        class ViewModel : INotifyPropertyChanged
-        {
-            private string fromText="";
-            public string FromText
-            {
-                get { return fromText; }
-                set { fromText = value; NotifyPropertyChanged("FromText"); }
-            }
-            private string toText = "";
-            public string ToText
-            {
-                get { return toText; }
-                set { toText = value; NotifyPropertyChanged("ToText"); }
-            }
-            public ViewModel()
-            {
-            }
-            public event PropertyChangedEventHandler PropertyChanged;
-    
-            private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-            {
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-                }
-            }
-        }
-    }
-```
-View can be created by the following code snippet.
-
-**[XAML]**
+#   Wrap text in Segmented control
 
 ```
-    <StackLayout
-        HorizontalOptions = "Center"
-        VerticalOptions="Center"
-        Padding="20,0,20,0">
-         <Label
-            Text="Bus Ticket Booking"
-            FontSize="Large"
-            FontAttributes="Bold"
-            HeightRequest="50"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"/>
-        <Entry
-            Placeholder="From"
-            Text="{Binding FromText,Mode=TwoWay}"
-            HeightRequest="50"
-            Margin="0,10,0,10"/>
-        <Entry
-            Placeholder="To"
-            Text="{Binding ToText}"
-            HeightRequest="50"
-            Margin="0,10,0,10"/>
-    </StackLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfButtons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:local="clr-namespace:SimpleSample"
+             x:Class="SimpleSample.MainPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Meals combo" TextColor="Black" FontSize="22"/>
+            <sfButtons:SfSegmentedControl
+                x:Name="segmentedControl"
+                BorderColor="Transparent"
+                BackgroundColor="LightBlue"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Color="Transparent"
+                SegmentHeight="120"
+                SegmentWidth="200"
+                ItemsSource="{Binding ViewItems}">
+                <sfButtons:SfSegmentedControl.BindingContext>
+                    <local:ViewModel/>
+                </sfButtons:SfSegmentedControl.BindingContext>
+                <sfButtons:SfSegmentedControl.SelectionIndicatorSettings>
+                    <sfButtons:SelectionIndicatorSettings Color="LightPink"/>
+                </sfButtons:SfSegmentedControl.SelectionIndicatorSettings>
+            </sfButtons:SfSegmentedControl>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
 ```
